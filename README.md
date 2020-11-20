@@ -1,5 +1,4 @@
 # **cookly**
-[![Build Status](https://travis-ci.org/cookly-PiTE/cookly.svg?branch=main)](https://travis-ci.org/cookly-PiTE/cookly)
 ## Participants
  * Przemysław Markiewicz
  * Bartłomiej Długosz
