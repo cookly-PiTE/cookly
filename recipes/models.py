@@ -20,7 +20,7 @@ class Recipe(models.Model):
     difficulty = models.CharField(max_length=100)
     cooking_method = models.CharField(max_length=150, null=False, default=None)
     cost = models.CharField(max_length=100)
-    is_vegetarian = models.BooleanField()
+    is_vegetarian = models.BooleanField(null=True)
 
 
 class Ingredient(models.Model):
