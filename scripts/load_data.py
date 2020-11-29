@@ -5,8 +5,8 @@ from decouple import config
 
 
 def get_recipe(recipe):
-    if recipe["difficulty"] is not None and recipe["course"] is not None and recipe["cooking_method"] is not None:
-        if recipe["dietary_considerations"] is not None:
+    if recipe["difficulty"] and recipe["course"] and recipe["cooking_method"]:
+        if recipe["dietary_considerations"]:
             is_vegetarian = "vegetarian" in recipe["dietary_considerations"]
         else:
             is_vegetarian = False
