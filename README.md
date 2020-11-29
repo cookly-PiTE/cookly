@@ -34,7 +34,7 @@ To tun application locally you need to run following commands:
 * Basic structure of project
 * Connecting MongoDB to Django
 * Travis CI basic configuration (for automatic testing)
-### sprint 2 (23.11-19.11)
+### sprint 2 (23.11-29.11)
 * Basic UI layout
 * Maintain and load dataset to the database
 * Write unit tests for functionality.
