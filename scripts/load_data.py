@@ -1,5 +1,7 @@
 import pandas as pd
 import json
+from pymongo import MongoClient
+from decouple import config
 
 
 def get_recipe(recipe):
@@ -12,7 +14,8 @@ def get_recipe(recipe):
         recipe_dict = {
             "name": recipe["title"],
             "description": recipe["description"],
-            "instruction": recipe["instructions"],
+            "instructions": recipe["instructions"],
+            "ingredients": recipe["ingredients"],
             "course_type": recipe["course"],
             "difficulty": recipe["difficulty"],
             "cooking_method": recipe["cooking_method"],
@@ -37,5 +40,12 @@ def run():
         recipe_dict = get_recipe(recipe)
         recipes = recipes.append(recipe_dict, ignore_index=True)
 
-    print(recipes.head(50))
-    print(recipes.shape)
+    client = MongoClient(config("DB_HOST"))
+
+    db = client[config("DB_NAME")]
+    collection = db['recipes_recipe']
+
+    recipes.reset_index(inplace=True)
+    recipes_dict = recipes.to_dict("records")
+
+    collection.insert_many(recipes_dict)
