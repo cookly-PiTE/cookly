@@ -15,10 +15,12 @@ class MealCost(ChoiceEnum):
 class Recipe(models.Model):
     name = models.CharField(max_length=300, null=False, default=None)
     description = models.TextField(null=False, default=None)
+    instruction = models.TextField(null=False, default=None)
     course_type = models.CharField(max_length=150, null=False, default=None)
     difficulty = models.CharField(max_length=100)
     cooking_method = models.CharField(max_length=150, null=False, default=None)
     cost = models.CharField(max_length=100)
+    is_vegetarian = models.BooleanField()
 
 
 class Ingredient(models.Model):
