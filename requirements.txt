@@ -5,3 +5,4 @@ django-extensions==3.0.9
 sqlparse==0.2.4
 python-decouple==3.3
 django-enumchoicefield==2.0.0
+pandas==1.1.4
