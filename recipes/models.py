@@ -1,4 +1,4 @@
-from django.db import models
+from djongo import models
 from enumchoicefield import ChoiceEnum, EnumChoiceField
 
 # Create your models here.
@@ -13,6 +13,7 @@ class MealCost(ChoiceEnum):
 
 
 class Recipe(models.Model):
+    _id = models.ObjectIdField()
     name = models.CharField(max_length=300, null=False, default=None)
     description = models.TextField(null=False, default=None)
     instructions = models.TextField(null=False, default=None)
