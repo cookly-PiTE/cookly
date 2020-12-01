@@ -16,7 +16,8 @@ To tun application locally you need to run following commands:
     * on linux: `source venv/bin/activate` (deactivate with `deactivate` command)
     * on windows: `.\venv\Scripts\activate`
 * Install dependencies `pip install -r requirements.txt`
-* get secret values - you have to create `.env` file (it should look like `.env.example`) and ask for secret variables 
+* get secret values - you have to create `.env` file (it should look like `.env.example`) and ask for secret variables
+* To load recipes into database it may be necessary to run script `python manage.py runscript load_data` 
 * Run application `python manage.py runserver`
 ## Technology stack
 * Backend: Python, Django
