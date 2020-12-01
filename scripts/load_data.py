@@ -2,7 +2,7 @@ import pandas as pd
 import json
 from pymongo import MongoClient
 from decouple import config
-
+import uuid
 
 def get_recipe(recipe):
     if recipe["difficulty"] and recipe["course"] and recipe["cooking_method"]:
@@ -14,6 +14,7 @@ def get_recipe(recipe):
         ingredients = [{"name": name} for name in recipe["ingredients"]]
         instructions = " ".join(recipe["instructions"])
         recipe_dict = {
+            "id": uuid.uuid1(),
             "name": recipe["title"],
             "description": recipe["description"],
             "instructions": instructions,

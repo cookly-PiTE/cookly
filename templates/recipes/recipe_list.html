@@ -1,0 +1,9 @@
+{% extends '_base.html' %}
+{% block title %}Recipes{% endblock title %}
+{% block content %}
+    {% for recipe in recipe_list %}
+    <div>
+        <h2><a href="{{ recipe.get_absolute_url }}">{{ recipe }}</a></h2>
+    </div>
+    {% endfor %}
+{% endblock content %}
