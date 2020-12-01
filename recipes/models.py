@@ -1,5 +1,6 @@
 from djongo import models
 from enumchoicefield import ChoiceEnum, EnumChoiceField
+
 # Create your models here.
 
 

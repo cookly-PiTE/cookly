@@ -12,7 +12,7 @@ def get_recipe(recipe):
             is_vegetarian = False
 
         ingredients = [{"name": name} for name in recipe["ingredients"]]
-        instructions = ' '.join(recipe["instructions"])
+        instructions = " ".join(recipe["instructions"])
         recipe_dict = {
             "name": recipe["title"],
             "description": recipe["description"],
@@ -22,7 +22,7 @@ def get_recipe(recipe):
             "difficulty": recipe["difficulty"],
             "cooking_method": recipe["cooking_method"],
             "cost": recipe["cost"],
-            "is_vegetarian": is_vegetarian
+            "is_vegetarian": is_vegetarian,
         }
 
         return recipe_dict
@@ -46,7 +46,7 @@ def run():
     client = MongoClient(config("DB_HOST"))
 
     db = client[config("DB_NAME")]
-    collection = db['recipes_recipe']
+    collection = db["recipes_recipe"]
 
     recipes.reset_index(inplace=True)
     recipes_dict = recipes.to_dict("records")
