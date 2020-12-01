@@ -11,17 +11,20 @@ def get_recipe(recipe):
         else:
             is_vegetarian = False
 
+        ingredients = [{"name": name} for name in recipe["ingredients"]]
+        instructions = ' '.join(recipe["instructions"])
         recipe_dict = {
             "name": recipe["title"],
             "description": recipe["description"],
-            "instructions": recipe["instructions"],
-            "ingredients": recipe["ingredients"],
+            "instructions": instructions,
+            "ingredients": ingredients,
             "course_type": recipe["course"],
             "difficulty": recipe["difficulty"],
             "cooking_method": recipe["cooking_method"],
             "cost": recipe["cost"],
             "is_vegetarian": is_vegetarian
         }
+
         return recipe_dict
     else:
         pass
