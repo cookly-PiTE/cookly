@@ -33,7 +33,7 @@ class RecipeTestCase(unittest.TestCase):
             cost="expensive",
         )
 
-    def test_animals_can_speak(self):
+    def test_object_recipe_create(self):
         cake = Recipe.objects.get(name="Cake")
         pie = Recipe.objects.get(name="Pie")
         self.assertEqual(str(cake), "Cake")
