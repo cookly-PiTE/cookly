@@ -1,0 +1,33 @@
+{% extends '_base.html' %}
+{% block content %}
+    {% for recipe in recipe_list %}
+        <article class="media content-section p-2">
+            <div class="media-body p-1">
+                <h2><a href="{{ recipe.get_absolute_url }}"
+                       class="font-weight-bold list-group-item-action">{{ recipe }}</a></h2>
+                <p class="article-content"> {{ recipe.description }}</p>
+            </div>
+        </article>
+
+    {% endfor %}
+
+    <div class="pagination ">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a class="btn" id="btn-pagination" href="?page={{ page_obj.previous_page_number }}">
+            <b>Previous</b>
+            </a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a class="btn" id="btn-pagination" href="?page={{ page_obj.next_page_number }}">
+          <b>Next</b>
+           </a>
+        {% endif %}
+    </span>
+    </div>
+{% endblock content %}

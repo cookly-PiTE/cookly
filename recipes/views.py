@@ -1,15 +1,16 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.views.generic.list import ListView
+from django.views.generic import ListView, DetailView
 from .models import Recipe
 
 
-class RecipeList(ListView):
+class RecipeListView(ListView):
     model = Recipe
-    paginate_by = 40
-    template_name = "recipes/index.html"
+    paginate_by = 20
+    context_object_name = "recipe_list"
+    template_name = "recipes/recipe_list.html"
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['recipes'] = Recipe.objects.all()
-        return context
+
+class RecipeDetailView(DetailView):
+    model = Recipe
+    template_name = "recipes/recipe_detail.html"

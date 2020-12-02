@@ -1,5 +1,8 @@
 from djongo import models
 from enumchoicefield import ChoiceEnum, EnumChoiceField
+from django.urls import reverse
+import uuid
+
 
 # Create your models here.
 
@@ -23,7 +26,8 @@ class Ingredient(models.Model):
 
 
 class Recipe(models.Model):
-    _id = models.ObjectIdField()
+    # _id = models.ObjectIdField()
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=300, null=False, default=None)
     description = models.TextField(null=False, default=None)
     instructions = models.TextField(null=False, default=None)
@@ -42,3 +46,6 @@ class Recipe(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse("recipe_detail", args=[self.id])

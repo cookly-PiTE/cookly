@@ -1,8 +1,9 @@
 from django.urls import path
-
+import uuid
 from . import views
-from .views import RecipeList
+from .views import RecipeListView, RecipeDetailView
 
 urlpatterns = [
-    path('', RecipeList.as_view()),
+    path("", RecipeListView.as_view(), name="recipe_list"),
+    path("<uuid:pk>", RecipeDetailView.as_view(), name="recipe_detail"),
 ]
