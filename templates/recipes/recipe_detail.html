@@ -3,16 +3,16 @@
 {% block title %}{{ recipe.title }}{% endblock title %}
 
 {% block content %}
-<div class="recipe-detail p-2">
-    <h2>{{ recipe }}</h2>
-    <h3>Description:</h3>
-    <p>{{ recipe.description }}</p>
-    <h3>Ingredients</h3>
-    {% for  ingredient in recipe.ingredients%}
-        <p>{{ ingredient.name }}</p>
-    {% endfor %}
-    <h3>Instructions</h3>
-    <p>{{ recipe.instructions}}</p>
-</div>
+    <div class="recipe-detail p-2">
+        <h2>{{ recipe }}</h2>
+        <h3>Description:</h3>
+        <p>{{ recipe.description }}</p>
+        <h3>Ingredients</h3>
+        {% for  ingredient in recipe.ingredients %}
+            <p>{{ ingredient.name }}</p>
+        {% endfor %}
+        <h3>Instructions</h3>
+        <p>{{ recipe.instructions }}</p>
+    </div>
 
 {% endblock content %}

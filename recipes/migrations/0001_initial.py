@@ -10,25 +10,37 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Recipe',
+            name="Recipe",
             fields=[
-                ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
-                ('name', models.CharField(default=None, max_length=300)),
-                ('description', models.TextField(default=None)),
-                ('instructions', models.TextField(default=None)),
-                ('ingredients', djongo.models.fields.ArrayField(model_container=recipes.models.Ingredient)),
-                ('course_type', models.CharField(default=None, max_length=150)),
-                ('difficulty', models.CharField(max_length=100)),
-                ('cooking_method', models.CharField(default=None, max_length=150)),
-                ('cost', models.CharField(max_length=100)),
-                ('is_vegetarian', models.BooleanField(null=True)),
-                ('n_reviews', models.IntegerField(default=0)),
-                ('average_rating', models.FloatField(default=0)),
+                (
+                    "id",
+                    models.UUIDField(
+                        default=uuid.uuid4,
+                        editable=False,
+                        primary_key=True,
+                        serialize=False,
+                    ),
+                ),
+                ("name", models.CharField(default=None, max_length=300)),
+                ("description", models.TextField(default=None)),
+                ("instructions", models.TextField(default=None)),
+                (
+                    "ingredients",
+                    djongo.models.fields.ArrayField(
+                        model_container=recipes.models.Ingredient
+                    ),
+                ),
+                ("course_type", models.CharField(default=None, max_length=150)),
+                ("difficulty", models.CharField(max_length=100)),
+                ("cooking_method", models.CharField(default=None, max_length=150)),
+                ("cost", models.CharField(max_length=100)),
+                ("is_vegetarian", models.BooleanField(null=True)),
+                ("n_reviews", models.IntegerField(default=0)),
+                ("average_rating", models.FloatField(default=0)),
             ],
         ),
     ]

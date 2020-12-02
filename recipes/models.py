@@ -27,11 +27,7 @@ class Ingredient(models.Model):
 
 class Recipe(models.Model):
     # _id = models.ObjectIdField()
-    id = models.UUIDField(
-        primary_key=True,
-        default=uuid.uuid4,
-        editable=False
-    )
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=300, null=False, default=None)
     description = models.TextField(null=False, default=None)
     instructions = models.TextField(null=False, default=None)
@@ -52,5 +48,4 @@ class Recipe(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('recipe_detail', args=[self.id])
-
+        return reverse("recipe_detail", args=[self.id])
