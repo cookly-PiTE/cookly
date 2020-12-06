@@ -1,3 +1,7 @@
 from django.test import TestCase
 
-# Create your tests here.
+class DummyTestCase(TestCase):
+        def setUp(self):
+            pass
+        def test_1(self):
+            self.assertEqual(11, 11)
