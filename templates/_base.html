@@ -17,7 +17,16 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-item nav-link" href="{% url 'recipe_list' %}">Home</a>
+            <a class="nav-item nav-link" href="{% url 'home' %}">Home</a>
+        </div>
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="{% url 'recipe_list' %}">Recipes</a>
+        </div>
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+        </div>
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
         </div>
     </div>
 </nav>
