@@ -33,7 +33,7 @@ def get_recipe(recipe):
 
 def run():
 
-    with open("recipes.json", "r") as f:
+    with open("recipes.json", "r", encoding="utf8") as f:
         data = f.read()
 
     json_recipes = json.loads(data)

@@ -1,6 +1,7 @@
 from djongo import models
 from enumchoicefield import ChoiceEnum, EnumChoiceField
 from django.urls import reverse
+from django.contrib.auth import get_user_model
 import uuid
 
 
@@ -49,3 +50,21 @@ class Recipe(models.Model):
 
     def get_absolute_url(self):
         return reverse("recipe_detail", args=[self.id])
+
+
+class Review(models.Model):
+    recipe = models.ForeignKey(
+        Recipe,
+        on_delete=models.CASCADE,
+        related_name='reviews',
+    )
+
+    review = models.CharField(max_length=255)
+    
+    author = models.ForeignKey(
+        get_user_model(),
+        on_delete=models.CASCADE,
+    )
+
+    def __str__(self):
+        return self.review
