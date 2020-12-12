@@ -7,7 +7,7 @@ from .models import Recipe
 
 class RecipeListView(ListView):
     model = Recipe
-    paginate_by = 20
+    paginate_by = 10
     context_object_name = "recipe_list"
     template_name = "recipes/recipe_list.html"
 
@@ -19,12 +19,10 @@ class RecipeDetailView(DetailView):
 
 class SearchResultsListView(ListView):
     model = Recipe
-    paginate_by = 20
+    paginate_by = 10
     context_object_name = "recipe_list"
     template_name = "recipes/search_results.html"
 
     def get_queryset(self):
-        query = self.request.GET.get('q')
-        return Recipe.objects.filter(
-            Q(name__icontains=query)
-        )
+        query = self.request.GET.get("q")
+        return Recipe.objects.filter(Q(name__icontains=query))

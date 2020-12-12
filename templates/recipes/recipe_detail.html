@@ -5,6 +5,7 @@
 {% block content %}
     <div class="recipe-detail p-2">
         <h2>{{ recipe }}</h2>
+        <img src="{{ recipe.image_url }}">
         <h3>Description:</h3>
         <p>{{ recipe.description }}</p>
         <h3>Ingredients</h3>

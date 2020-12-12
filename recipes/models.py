@@ -34,6 +34,7 @@ class Recipe(models.Model):
     ingredients = models.ArrayField(
         model_container=Ingredient,
     )
+    image_url = models.URLField(default=None)
     course_type = models.CharField(max_length=150, null=False, default=None)
     difficulty = models.CharField(max_length=100)
     cooking_method = models.CharField(max_length=150, null=False, default=None)
