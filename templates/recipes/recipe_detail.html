@@ -3,17 +3,19 @@
 {% block title %}{{ recipe.title }}{% endblock title %}
 
 {% block content %}
-    <div class="recipe-detail p-2">
-        <h2>{{ recipe }}</h2>
-        <img src="{{ recipe.image_url }}">
-        <h3>Description:</h3>
-        <p>{{ recipe.description }}</p>
-        <h3>Ingredients</h3>
-        {% for  ingredient in recipe.ingredients %}
-            <p>{{ ingredient.name }}</p>
-        {% endfor %}
-        <h3>Instructions</h3>
-        <p>{{ recipe.instructions }}</p>
+    <div class="card mt-3 mb-3" style="max-width: 100rem;">
+     <h2 class="card-title font-weight-bold p-2">{{ recipe }}</h2>
+        <div class="card-body">
+            <img src="{{ recipe.image_url }}">
+            <p class="card-text pt-3">{{ recipe.description }}</p>
+            <h4 class="card-title">Ingredients</h4>
+            <ul class="list-group list-group-flush">
+                {% for  ingredient in recipe.ingredients %}
+                    <li class="list-group-item">{{ ingredient.name }}</li>
+                {% endfor %}
+            </ul>
+            <h4 class="card-title">Instruction</h4>
+            <p class="card-text"> {{ recipe.instructions }}</p>
+        </div>
     </div>
-
 {% endblock content %}

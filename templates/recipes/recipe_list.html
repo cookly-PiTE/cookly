@@ -1,15 +1,18 @@
 {% extends '_base.html' %}
 {% block content %}
     {% for recipe in recipe_list %}
+        <div class="card list-group-item-action m-4">
         <article class="media content-section p-2">
-            <div class="media-body p-1">
+            <div class="card-body p-1">
                 <h2><a href="{{ recipe.get_absolute_url }}"
                        class="font-weight-bold list-group-item-action">{{ recipe }}</a></h2>
-                <p class="article-content"> {{ recipe.description }}</p>
-                <img src="{{ recipe.image_url }}">
+                <img src="{{ recipe.image_url }}" class="rounded float-left m-3">
+                <div class="mask rgba-white-slight"></div>
+                <p class="article-content m-3"> {{ recipe.description }}</p>
             </div>
         </article>
-
+        </div>
     {% endfor %}
+
     {% include '_pagination.html' with page_obj=page_obj %}
 {% endblock content %}

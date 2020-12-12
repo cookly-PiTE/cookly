@@ -1,11 +1,11 @@
- <div class="pagination ">
+ <div class="pagination justify-content-center mb-3">
     <span class="step-links">
         {% if page_obj.has_previous %}
-            <a class="btn" id="btn-pagination" href="?page={{ page_obj.previous_page_number }}">
+            <a class="btn btn-dark" id="btn-pagination" href="?page={{ page_obj.previous_page_number }}">
             <b>Previous</b>
             </a>
             {% else %}
-        <a class="btn disabled" id="btn-pagination">Previous</a>
+        <a class="btn btn-dark disabled" id="btn-pagination">Previous</a>
         {% endif %}
 
         <span class="current">
@@ -13,11 +13,11 @@
         </span>
 
         {% if page_obj.has_next %}
-            <a class="btn" id="btn-pagination" href="?page={{ page_obj.next_page_number }}">
+            <a class="btn btn-dark" id="btn-pagination" href="?page={{ page_obj.next_page_number }}">
           <b>Next</b>
            </a>
             {% else %}
-        <a class="btn disabled" id="btn-pagination">Next</a>
+        <a class="btn btn-dark disabled" id="btn-pagination">Next</a>
         {% endif %}
     </span>
     </div>
