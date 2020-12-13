@@ -26,9 +26,32 @@ class SearchResultsListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['query'] = self.request.GET.get('q')
+        context["cost"] = self.request.GET.get("cost")
+        context["name_contains"] = self.request.GET.get("name_contains")
+        context["cooking_method"] = self.request.GET.get("cooking_method")
         return context
 
     def get_queryset(self):
-        query = self.request.GET.get("q")
-        return Recipe.objects.filter(Q(name__icontains=query))
+        cost = self.request.GET.get("cost")
+        name_contains = self.request.GET.get("name_contains")
+        cooking_method = self.request.GET.get("cooking_method")
+        print(cooking_method)
+        print(cost)
+        if not cooking_method and cost:
+            recipes = Recipe.objects.filter(
+                Q(cost=cost) & Q(name__icontains=name_contains)
+            )
+        elif not cost and cooking_method:
+            recipes = Recipe.objects.filter(
+                Q(name__icontains=name_contains)
+                & Q(cooking_method__icontains=cooking_method)
+            )
+        elif cost is None and cooking_method is None:
+            recipes = Recipe.objects.filter(Q(name__icontains=name_contains))
+        else:
+            recipes = Recipe.objects.filter(
+                Q(cost=cost)
+                & Q(name__icontains=name_contains)
+                & Q(cooking_method__icontains=cooking_method)
+            )
+        return recipes

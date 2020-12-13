@@ -1,20 +1,29 @@
 {% extends '_base.html' %}
 {% block content %}
-
-    <h1 class="font-weight-bold">Search results</h1>
+    {% load static %}
+    {% include '_filter_form.html' %}
+    {% if recipe_list|length > 0 %}
+        <h1 class="font-weight-bold">Search results</h1>
         {% for recipe in recipe_list %}
-        <div class="card list-group-item-action m-4">
-        <article class="media content-section p-2">
-            <div class="card-body p-1">
-                <h2><a href="{{ recipe.get_absolute_url }}"
-                       class="font-weight-bold list-group-item-action">{{ recipe }}</a></h2>
-                <img src="{{ recipe.image_url }}" class="rounded float-left m-3">
-                <div class="mask rgba-white-slight"></div>
-                <p class="article-content m-3"> {{ recipe.description }}</p>
-            </div>
-        </article>
-        </div>
-    {% endfor %}
+            <div class="card list-group-item-action m-4">
+                <article class="media content-section p-2">
+                    <div class="card-body p-1">
+                        {% if recipe.is_vegetarian == 1 %}
+                            <i class="fas fa-seedling"></i><small class="font-italic"> Vegetarian</small>
+                        {% endif %}
+                        <h2><a href="{{ recipe.get_absolute_url }}"
+                               class="font-weight-bold list-group-item-action">{{ recipe }}</a></h2>
+                        <img src="{{ recipe.image_url }}" class="rounded float-left m-3">
 
-    {% include '_pagination_search.html' with page_obj=page_obj %}
+                        <div class="mask rgba-white-slight"></div>
+                        <p class="article-content m-3"> {{ recipe.description }}</p>
+                    </div>
+                </article>
+            </div>
+        {% endfor %}
+        {% include '_pagination.html' with page_obj=page_obj %}
+    {% else %}
+        <h1 class="font-weight-bold ">Sorry, we couldn't find what you want</h1>
+        <img class="card-img p-5" src="{% static "undraw_empty.svg" %}">
+    {% endif %}
 {% endblock content %}
