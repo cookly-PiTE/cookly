@@ -20,8 +20,14 @@ class RecipeDetailView(DetailView):
 class SearchResultsListView(ListView):
     model = Recipe
     paginate_by = 10
+    strict = False
     context_object_name = "recipe_list"
     template_name = "recipes/search_results.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['query'] = self.request.GET.get('q')
+        return context
 
     def get_queryset(self):
         query = self.request.GET.get("q")
