@@ -35,8 +35,6 @@ class SearchResultsListView(ListView):
         cost = self.request.GET.get("cost")
         name_contains = self.request.GET.get("name_contains")
         cooking_method = self.request.GET.get("cooking_method")
-        print(cooking_method)
-        print(cost)
         if not cooking_method and cost:
             recipes = Recipe.objects.filter(
                 Q(cost=cost) & Q(name__icontains=name_contains)
