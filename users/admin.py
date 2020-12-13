@@ -6,7 +6,6 @@ from .forms import MakeUserForm, ChangeUserForm
 from .models import User
 
 
-
 class MyUserAdmin(UserAdmin):
     add_form = MakeUserForm
     form = ChangeUserForm

@@ -7,14 +7,6 @@ import uuid
 # Create your models here.
 
 
-class DifficultyTypes(ChoiceEnum):
-    pass
-
-
-class MealCost(ChoiceEnum):
-    pass
-
-
 class Ingredient(models.Model):
     name = models.TextField()
 
@@ -26,7 +18,6 @@ class Ingredient(models.Model):
 
 
 class Recipe(models.Model):
-    # _id = models.ObjectIdField()
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=300, null=False, default=None)
     description = models.TextField(null=False, default=None)
@@ -34,6 +25,7 @@ class Recipe(models.Model):
     ingredients = models.ArrayField(
         model_container=Ingredient,
     )
+    image_url = models.URLField(default=None)
     course_type = models.CharField(max_length=150, null=False, default=None)
     difficulty = models.CharField(max_length=100)
     cooking_method = models.CharField(max_length=150, null=False, default=None)

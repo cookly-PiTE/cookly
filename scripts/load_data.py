@@ -4,8 +4,14 @@ from pymongo import MongoClient
 from decouple import config
 import uuid
 
+
 def get_recipe(recipe):
-    if recipe["difficulty"] and recipe["course"] and recipe["cooking_method"]:
+    if (
+        recipe["difficulty"]
+        and recipe["course"]
+        and recipe["cooking_method"]
+        and recipe["photo_url"]
+    ):
         if recipe["dietary_considerations"]:
             is_vegetarian = "vegetarian" in recipe["dietary_considerations"]
         else:
@@ -19,12 +25,16 @@ def get_recipe(recipe):
             "description": recipe["description"],
             "instructions": instructions,
             "ingredients": ingredients,
+            "image_url": recipe["photo_url"],
             "course_type": recipe["course"],
             "difficulty": recipe["difficulty"],
             "cooking_method": recipe["cooking_method"],
             "cost": recipe["cost"],
             "is_vegetarian": is_vegetarian,
         }
+
+        if recipe_dict["cost"] == "Splurge":
+            recipe_dict["cost"] = "Expensive"
 
         return recipe_dict
     else:
