@@ -21,7 +21,7 @@ class RecipeDetailView(DetailView):
 class RecipeCreateView(LoginRequiredMixin, CreateView):
     model = Recipe
     template_name = "recipes/recipe_add.html"
-    fields = ['name', 'description', 'instructions', 'course_type', 'difficulty', 'cost', 'is_vegetarian', 'cooking_method']
+    fields = ['name', 'description', 'instructions', 'course_type', 'cost', 'is_vegetarian', 'cooking_method']
 
 
 class SearchResultsListView(ListView):
