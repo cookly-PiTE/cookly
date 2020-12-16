@@ -24,6 +24,9 @@
             <a class="nav-item nav-link font-weight-bold" href="{% url 'recipe_list' %}">Recipes</a>
         </div>
         {% if user.is_authenticated %}
+            <div class="navbar-nav">
+                <a class="nav-item nav-link font-weight-bold" href="{% url 'recipe_add' %}">Add recipe</a>
+            </div>
             <div class="navbar-nav ml-auto mr-1 text-warning">
                 <h2>{{ user.username }} </h2>
             </div>

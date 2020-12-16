@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "recipes",
     "cookly",
     "users.apps.UsersConfig",
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [

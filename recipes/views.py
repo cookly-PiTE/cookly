@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.db.models import Q
-from django.views.generic import ListView, DetailView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import ListView, DetailView, CreateView
 from .models import Recipe
 
 
@@ -15,6 +16,12 @@ class RecipeListView(ListView):
 class RecipeDetailView(DetailView):
     model = Recipe
     template_name = "recipes/recipe_detail.html"
+
+
+class RecipeCreateView(LoginRequiredMixin, CreateView):
+    model = Recipe
+    template_name = "recipes/recipe_add.html"
+    fields = ['name', 'description', 'instructions', 'course_type', 'difficulty', 'cost', 'is_vegetarian', 'cooking_method']
 
 
 class SearchResultsListView(ListView):
