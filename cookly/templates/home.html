@@ -3,12 +3,5 @@
 {% block title %}Home{% endblock title %}
 
 {% block content %}
-    {% if user.is_authenticated %}
-        <h1>Hello, {{ user.username }} </h1>
-        <p><a href="{% url 'logout' %}">Log Out</a></p>
-    {% else %}
-        <p>You are not logged in</p>
-    {% endif %}
-
 {% include '_filter_form.html' %}
 {% endblock content %}

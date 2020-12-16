@@ -1,16 +1,16 @@
   <div class="form-group m-4">
-        <form class="text-center border border-light form-inline mt-2 mt-md-0 m-4" action="{% url 'search_results' %}"
+        <form class="text-center form-inline mt-2 mt-md-0 m-4" action="{% url 'search_results' %}"
               method="get">
-            <label for="name_contains">Recipe keyword: </label>
+            <label for="name_contains" class="font-weight-bold">Recipe keyword: </label>
             <input name="name_contains" class="form-control mr-sm-2" type="text" placeholder="Recipe keyword">
-             <label for="cost">Cost: </label>
+             <label for="cost" class="font-weight-bold">Cost: </label>
             <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="cost" placeholder="cost">
                 <option selected disabled>Choose...</option>
                 <option value="Inexpensive">Inexpensive</option>
                 <option value="Moderate">Moderate</option>
                 <option value="Expensive">Expensive</option>
             </select>
-            <label for="cooking_method">Cooking method: </label>
+            <label for="cooking_method" class="font-weight-bold">Cooking method: </label>
             <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="cooking_method" placeholder="cost">
                 <option selected disabled>Choose...</option>
                 <option value="Baking">Baking</option>
@@ -22,6 +22,6 @@
                 <option value="Roasting">Roasting</option>
                 <option value="Slow-cooking">Slow-Cooking</option>
             </select>
-            <button type="submit" class="btn btn-primary">Search</button>
+            <button type="submit" class="btn btn-dark text-warning">Search</button>
         </form>
     </div>
