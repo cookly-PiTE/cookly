@@ -1,11 +1,17 @@
-from .models import Recipe
+from .models import Recipe, Review
 from django.urls import reverse
 from django.test import Client, TestCase
+from django.contrib.auth import get_user_model
 
 
 class RecipeTest(TestCase):
     def setUp(self):
         self.client = Client()
+
+        self.user = get_user_model().objects.create_user(
+            username='reviewuser',
+            email='reviewuser@email.com'
+        )
 
         self.recipe = Recipe.objects.create(
             name="Cake",
@@ -15,6 +21,12 @@ class RecipeTest(TestCase):
             difficulty="easy",
             cooking_method="baking",
             cost="inexpensive",
+        )
+
+        self.review = Review.objects.create(
+            recipe = self.recipe,
+            author = self.user,
+            review = 'Test review',
         )
 
     def test_recipe_listing(self):
@@ -34,4 +46,5 @@ class RecipeTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(no_response.status_code, 404)
         self.assertContains(response, "Cake")
+        self.assertContains(response, 'Test review')
         self.assertTemplateUsed(response, "recipes/recipe_detail.html")
