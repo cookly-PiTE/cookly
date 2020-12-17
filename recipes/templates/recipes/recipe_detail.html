@@ -21,6 +21,10 @@
         </div>
         <div>
             <h2 class="card-title font-weight-bold p-2 mt-3">Reviews</h2>
+            {% if user.is_authenticated %}
+            <!-- <button class="btn btn-dark text-warning" type="submit">Add recipe</button> -->
+                <h2><a href="{% url 'review_add' %}" class="ml-3 mr-auto md-6 font-weight-bold btn btn-dark text-warning">Add review</a></h2>
+            {% endif %}
             {% for review in recipe.reviews.all %}
                 <div class="card-body">
                     <h2>{{ review.author }}</h2>

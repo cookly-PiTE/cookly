@@ -61,3 +61,6 @@ class Review(models.Model):
     def __str__(self):
         return self.review
 
+
+    def get_absolute_url(self):
+        return reverse("home")
