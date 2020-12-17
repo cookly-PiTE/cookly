@@ -6,7 +6,9 @@
     <div class="card mt-3 mb-3" style="max-width: 100rem;">
      <h2 class="card-title font-weight-bold p-2">{{ recipe }}</h2>
         <div class="card-body">
-            <img src="{{ recipe.image_url }}">
+             {% if recipe.image_url %}
+                        <img src="{{ recipe.image_url }}" class="rounded float-left m-3">
+                    {% endif %}
             <p class="card-text pt-3">{{ recipe.description }}</p>
             <h4 class="card-title">Ingredients</h4>
             <ul class="list-group list-group-flush">

@@ -4,6 +4,7 @@ from django.urls import reverse
 import uuid
 
 
+
 # Create your models here.
 
 
@@ -41,3 +42,6 @@ class Recipe(models.Model):
 
     def get_absolute_url(self):
         return reverse("recipe_detail", args=[self.id])
+
+
+
