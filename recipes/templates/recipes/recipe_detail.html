@@ -19,5 +19,16 @@
             <h4 class="card-title">Instruction</h4>
             <p class="card-text"> {{ recipe.instructions }}</p>
         </div>
+        <div>
+            <h2 class="card-title font-weight-bold p-2 mt-3">Reviews</h2>
+            {% for review in recipe.reviews.all %}
+                <div class="card-body">
+                    <h2>{{ review.author }}</h2>
+                    <p>{{ review.review }}</p>
+                </div>
+            {% empty %}
+                <p class="p-3">No reviews were added</p>
+            {% endfor %}
+        </div>
     </div>
 {% endblock content %}
