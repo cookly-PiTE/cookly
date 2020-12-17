@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DetailView, CreateView
-from .models import Recipe
+from .models import Recipe, Review
 
 
 class RecipeListView(ListView):
@@ -22,6 +22,16 @@ class RecipeCreateView(LoginRequiredMixin, CreateView):
     model = Recipe
     template_name = "recipes/recipe_add.html"
     fields = ['name', 'description', 'instructions', 'course_type', 'cost', 'is_vegetarian', 'cooking_method']
+
+
+class ReviewCreateView(LoginRequiredMixin, CreateView):
+    model = Review
+    template_name = "recipes/review_add.html"
+    fields = ['review']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 
 class SearchResultsListView(ListView):
