@@ -5,6 +5,7 @@ from django.contrib.auth import get_user_model
 import uuid
 
 
+
 # Create your models here.
 
 
@@ -59,3 +60,4 @@ class Review(models.Model):
 
     def __str__(self):
         return self.review
+
